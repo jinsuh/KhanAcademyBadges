@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/progress_loading"
+        android:id="@+id/dialog_loading"/>
+
+    <TextView
+        android:id="@+id/dialog_categorypoints"
+        android:paddingLeft="@dimen/category_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/dialog_icon"
+        android:layout_below="@id/dialog_categorypoints"
+        android:paddingTop="@dimen/icon_padding"
+        android:layout_width="@dimen/icon_length"
+        android:layout_height="@dimen/icon_length"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/dialog_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="@dimen/description_padding"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dialog_icon"
+        />
+
+
+
+</RelativeLayout>

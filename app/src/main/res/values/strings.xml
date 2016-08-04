@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KhanAcademyBadges</string>
+    <string name="ok">OK</string>
+    <string name="points">points</string>
+    <string name="error">Error</string>
+    <string name="error_message">Could not retrieve data</string>
+    <string name="retry">Retry</string>
+
+</resources>
