@@ -60,7 +60,32 @@ public class IconGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (properItem instanceof Badge) {
             final Badge currBadge = (Badge) properItem;
             final IconViewHolder iconViewHolder = (IconViewHolder) holder;
-            iconViewHolder.icon.setImageUrl(currBadge.getIconLargeUrl(), imageLoader);
+            final ImageView badgeIcon = iconViewHolder.icon;
+            badgeIcon.setImageDrawable(null);
+            final View loadingIcon = iconViewHolder.loading;
+            final View container = iconViewHolder.container;
+            imageLoader.get(currBadge.getIconLargeUrl(), new ImageLoader.ImageListener() {
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                    if (response != null) {
+                        Bitmap bitmap = response.getBitmap();
+                        if (bitmap != null) {
+                            badgeIcon.setImageBitmap(bitmap);
+                            loadingIcon.setVisibility(View.GONE);
+                            container.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e(MainBadgeActivity.TAG, "Error getting image from url");
+                    badgeIcon.setImageResource(R.mipmap.ic_launcher);
+                    loadingIcon.setVisibility(View.GONE);
+                    container.setVisibility(View.VISIBLE);
+                }
+            });
+
             iconViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -107,6 +132,9 @@ public class IconGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(MainBadgeActivity.TAG, "Error getting image from url");
+                largeBadgeIcon.setImageResource(R.mipmap.ic_launcher);
+                View loadingBar = dialogView.findViewById(R.id.dialog_loading);
+                loadingBar.setVisibility(View.GONE);
             }
         });
 

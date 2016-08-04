@@ -5,20 +5,34 @@
     android:background="?selectableItemBackground"
     android:clickable="true">
 
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/iconview_icon"
+    <include
+        android:id="@+id/iconview_loading"
+        layout="@layout/progress_loading" />
+
+    <RelativeLayout
+        android:id="@+id/iconview_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerInside"
-        android:adjustViewBounds="true"/>
+        android:visibility="invisible">
 
-    <TextView
-        android:id="@+id/iconview_name"
-        android:layout_below="@id/iconview_icon"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iconview_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/iconview_name"
+            android:layout_below="@id/iconview_icon"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

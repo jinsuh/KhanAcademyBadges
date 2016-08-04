@@ -5,5 +5,19 @@
     <string name="error">Error</string>
     <string name="error_message">Could not retrieve data</string>
     <string name="retry">Retry</string>
+    <string name="image_retrieval_error">Could not retrieve image at this time</string>
+    <string name="loading_message">Getting badge information...</string>
+    <string name="category_name">type_label</string>
+    <string name="category_id">category</string>
+    <string name="category_description">description</string>
+    <string name="category_image">medium_icon_src</string>
+
+    <string name="badge_name">description</string>
+    <string name="badge_category">badge_category</string>
+    <string name="badge_description">safe_extended_description</string>
+    <string name="badge_points">points</string>
+    <string name="badge_images">icons</string>
+    <string name="badge_image_compact">compact</string>
+    <string name="badge_image_large">large</string>
 
 </resources>

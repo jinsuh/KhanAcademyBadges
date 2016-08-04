@@ -122,7 +122,7 @@ public class MainBadgeActivity extends AppCompatActivity {
 
     private void showLoadingDialog() {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Getting badge information...");
+        progressDialog.setMessage(getString(R.string.loading_message));
         progressDialog.show();
     }
 
@@ -130,10 +130,10 @@ public class MainBadgeActivity extends AppCompatActivity {
         for (int i = 0; i < categoryResponse.length(); i++) {
             try {
                 JSONObject categoryObj = categoryResponse.getJSONObject(i);
-                String name = categoryObj.getString("type_label");
-                int id = categoryObj.getInt("category");
-                String description = categoryObj.getString("description");
-                String iconUrl = categoryObj.getString("medium_icon_src");
+                String name = categoryObj.getString(getString(R.string.category_name));
+                int id = categoryObj.getInt(getString(R.string.category_id));
+                String description = categoryObj.getString(getString(R.string.category_description));
+                String iconUrl = categoryObj.getString(getString(R.string.category_image));
                 BadgeCategory badgeCategory = new BadgeCategory(id, name, description, iconUrl);
                 categories.put(id, badgeCategory);
             } catch (JSONException e) {
@@ -146,13 +146,13 @@ public class MainBadgeActivity extends AppCompatActivity {
         for (int i = 0; i < badgeResponse.length(); i++) {
             try {
                 JSONObject badgeObj = badgeResponse.getJSONObject(i);
-                String name = badgeObj.getString("description");
-                int category = badgeObj.getInt("badge_category");
-                String description = badgeObj.getString("safe_extended_description");
-                int points = badgeObj.getInt("points");
-                JSONObject badgeIcon = badgeObj.getJSONObject("icons");
-                String iconCompactUrl = badgeIcon.getString("compact");
-                String iconLargeUrl = badgeIcon.getString("large");
+                String name = badgeObj.getString(getString(R.string.badge_name));
+                int category = badgeObj.getInt(getString(R.string.badge_category));
+                String description = badgeObj.getString(getString(R.string.badge_description));
+                int points = badgeObj.getInt(getString(R.string.points));
+                JSONObject badgeIcon = badgeObj.getJSONObject(getString(R.string.badge_images));
+                String iconCompactUrl = badgeIcon.getString(getString(R.string.badge_image_compact));
+                String iconLargeUrl = badgeIcon.getString(getString(R.string.badge_image_large));
                 Badge badge = new Badge(name, category, description, points, iconCompactUrl, iconLargeUrl);
                 badges.get(badge.getCategory()).add(badge);
             } catch (JSONException e) {
